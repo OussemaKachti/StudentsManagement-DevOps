@@ -32,14 +32,10 @@ pipeline {
     post {
         success {
             echo '✅ Build réussi ! Le projet a été compilé et packagé avec succès.'
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, allowEmptyArchive: true
         }
         failure {
             echo '❌ Build échoué ! Consultez les logs pour plus de détails.'
-        }
-        always {
-            echo 'Nettoyage de l\'espace de travail...'
-            cleanWs()
         }
     }
 }
